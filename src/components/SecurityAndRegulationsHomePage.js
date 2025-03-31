@@ -30,15 +30,21 @@ const securityFeatures = [
   },
 ];
 
-function SecurityAndRegulations(params) {
+function SecurityAndRegulations(props) {
   return (
-    <div style={{ margin: "120px 0 0" }}>
+    <div style={{ margin: "150px 0 0" }}>
       <Grid container spacing={0}>
-        <Grid size={6}>
-          <img src={image} alt="Digital Dropshipping Security" />
-        </Grid>
+        {props.windowWidth >= 750 && (
+          <Grid size={6}>
+            <img
+              src={image}
+              style={{ width: "37vw", maxWidth: "508.734px" }}
+              alt="Digital Dropshipping Security"
+            />
+          </Grid>
+        )}
 
-        <Grid size={6}>
+        <Grid size={props.windowWidth <= 750 ? 12 : 6}>
           <SmallTitleHeading sx={{ margin: "14px 0 0" }}>
             Security & Regulations
           </SmallTitleHeading>

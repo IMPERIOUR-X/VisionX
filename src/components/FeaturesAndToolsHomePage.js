@@ -38,7 +38,7 @@ function FeaturesAndTools(props) {
       style={{
         backgroundColor: theme.backgroundColor,
         width: "-webkit-fill-available",
-        margin: "81px 0 0",
+        margin: "140px 0 0",
         padding: "50px 0",
       }}
     >
@@ -49,7 +49,7 @@ function FeaturesAndTools(props) {
         Enhance Your Digital Dropshiping
       </TitleHeading>
 
-      <Grid margin={"60px 0 0"} container spacing={20}>
+      <Grid margin={"60px 0 0"} container spacing={5}>
         {featuresAndTools.map((featureAndTool, index) => {
           return (
             <Grid
@@ -60,7 +60,7 @@ function FeaturesAndTools(props) {
                 borderRadius: "13px",
                 textAlign: "center",
               }}
-              size={4}
+              size={{ lg: 4, md: 4, sm: 6, xs: 12 }}
             >
               <div
                 style={{

@@ -10,6 +10,7 @@ const PrimaryBackgroundImage = styled("div")({
   backgroundSize: "cover",
   height: "700px",
   width: "-webkit-fill-available",
+  maxWidth: "1600px",
   padding: "30px 0 0",
   position: "absolute",
   top: "0",

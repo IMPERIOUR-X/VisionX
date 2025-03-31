@@ -3,32 +3,26 @@ import theme from "../theme";
 import { FilledButton, TextButton } from "./Buttons";
 import { Stack, styled } from "@mui/material";
 import { PrimaryBackgroundImage } from "./BackgroundImages";
-
-const BigHeading = styled("h1")({
-  color: theme.primaryTextColor,
-  fontSize: "60px",
-  fontWeight: "400",
-  fontFamily: "Ubuntu",
-  width: "fit-content",
-});
-
-const HeadingSubtitle = styled("p")({
-  color: theme.secondaryTextColor,
-  fontSize: "16px",
-  fontFamily: "Ubuntu",
-  fontWeight: "300",
-  width: "48rem",
-});
+import { BigHeading, HeadingSubtitle, TextContentBold } from "./Typograhpy";
 
 const Feature = styled("div")({
   padding: "9px 30px",
   fontFamily: "Ubuntu",
   borderRadius: "20px",
   transition: "transform 0.2s ease-in-out",
+
+  "@media (max-width: 768px)": {
+    padding: "7px 26px",
+  },
+
+  "@media (max-width: 670px)": {
+    padding: "5px 7px",
+  },
 });
 
 function HeroHomePage(props) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [bigHeadingMargin, setBigHeadingMargin] = useState("");
   const features = [
     "Automation & Sourcing",
     "Storefront & Pricing",
@@ -44,13 +38,20 @@ function HeroHomePage(props) {
     return () => clearInterval(interval); // Cleanup to prevent memory leaks
   }, []);
 
+  useEffect(() => {
+    props.windowWidth === 1020
+      ? setBigHeadingMargin("3px 0 0 90px")
+      : setBigHeadingMargin("3px 0 0 38px");
+  }, [props.windowWidth]);
+
   return (
     <div
       style={{
         height: "500px",
         width: "-webkit-fill-available",
-        padding: "170px 0 0",
+        padding: "180px 0 0",
         textAlign: "center",
+        position: "relative",
       }}
     >
       <PrimaryBackgroundImage />
@@ -62,12 +63,13 @@ function HeroHomePage(props) {
           margin: "auto",
         }}
       >
-        <BigHeading sx={{ fontSize: "70px" }}>
+        <BigHeading className="BigHeading" sx={{ fontSize: "70px" }}>
           From Vision To Reality,
         </BigHeading>
         <BigHeading
+          className="BigHeading"
           sx={{
-            margin: "3px 0 0 90px",
+            margin: bigHeadingMargin,
             background: theme.primaryGradientTextColor,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -78,7 +80,7 @@ function HeroHomePage(props) {
         </BigHeading>
       </div>
 
-      <div style={{ margin: "14px auto 0", width: "fit-content" }}>
+      <div style={{ margin: "20px auto 0", width: "fit-content" }}>
         <HeadingSubtitle>
           Experience the next generation of financial freedom. Our secure and
           intuitive interface makes digital dropshipping in eCommerceEnterprise
@@ -116,7 +118,9 @@ function HeroHomePage(props) {
                 background: index === activeIndex && "rgb(225, 232, 227, 0.1)",
               }}
             >
-              {feature}
+              <TextContentBold className="TextContentBold">
+                {feature}
+              </TextContentBold>
             </Feature>
           );
         })}

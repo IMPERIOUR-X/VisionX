@@ -8,7 +8,7 @@ function HowItWorks(props) {
   return (
     <div style={{ margin: "120px 0 0", width: "-webkit-fill-available" }}>
       <Grid container spacing={0}>
-        <Grid size={6}>
+        <Grid size={props.windowWidth <= 750 ? 12 : 6}>
           <div
             style={{
               width: "fit-content",
@@ -63,16 +63,27 @@ function HowItWorks(props) {
             Start Dropshipping Now
           </FilledBigButton>
         </Grid>
-        <Grid sx={{ textAlign: "end" }} size={6}>
-          <img
-            src={image}
-            alt="digital dropshipping earth"
-            style={{
-              transition: "all 0.6s ease-in-out",
-              cursor: "grab",
+
+        {props.windowWidth >= 750 && (
+          <Grid
+            sx={{
+              textAlign: "end",
             }}
-          />
-        </Grid>
+            size={6}
+          >
+            <img
+              src={image}
+              alt="digital dropshipping earth"
+              style={{
+                transition: "all 0.6s ease-in-out",
+                cursor: "grab",
+                width: "37vw",
+                maxWidth: "508.734px",
+                marginTop: props.windowWidth <= 1140 ? "150px" : 0,
+              }}
+            />
+          </Grid>
+        )}
       </Grid>
     </div>
   );

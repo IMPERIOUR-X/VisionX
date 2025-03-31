@@ -1,0 +1,21 @@
+/* Login & Signup pages */
+
+@media only screen and (max-width: 600px) {
+  input.PrimaryTextInput {
+    width: 290px;
+    margin: 0 0 18px;
+  }
+
+  div.CheckboxContainer {
+    width: 290px;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+}
+
+@media only screen and (max-width: 1130px) {
+  img.LandingPageIllustImage {
+    width: 30px;
+  }
+}

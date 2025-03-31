@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/VX.ico";
 import theme from "../theme";
-import { OutlineButton, TextButton } from "../components/Buttons";
+import {
+  OutlineNavButton,
+  SocialIconButton,
+  TextNavButton,
+} from "../components/Buttons";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Stack } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import PlaylistRemoveIcon from "@mui/icons-material/PlaylistRemove";
 
 const NavLinks = [
   "Buy Space",
@@ -37,50 +43,132 @@ const NavLink = styled(Link)({
   "&:hover": {
     opacity: "0.8",
   },
+
+  "@media (max-width: 1200px)": {
+    fontSize: "14px",
+  },
+
+  "@media (max-width: 1024px)": {
+    fontSize: "12px",
+  },
+
+  "@media (max-width: 768px)": {
+    fontSize: "10px",
+  },
+
+  "@media (max-width: 480px)": {
+    fontSize: "8px",
+  },
+
+  "@media (max-width: 320px)": {
+    fontSize: "6px",
+  },
 });
 
 function NavBar(props) {
+  const [expandNavLinks, setExpandNavLinks] = useState(false);
+
+  function handleClick(evt) {
+    setExpandNavLinks((prevs) => !prevs);
+  }
+
   return (
     <nav
       style={{
-        padding: "24px 70px 20px",
+        padding: `24px ${props.bodySidePadding <= 50 ? 10 : 70}px 20px`,
         backgroundColor: theme.navbarBackground,
         borderBottom: `1px solid ${theme.navbarBorderColor}`,
         position: "fixed",
         zIndex: "100",
         display: "flex",
         width: "-webkit-fill-available",
+        maxWidth: "1460px",
         transformStyle: "preserve-3d",
       }}
     >
       <div style={{ width: "fit-content", margin: "auto 0 0" }}>
         <Stack direction={"row"} spacing={0}>
           <BrandLogo src={Logo} alt="VX Logo" />
-          <BrandName>VisionX</BrandName>
+          <BrandName>
+            {props.windowWidth >= 700 ? "VisionX" : "VX :-"}
+          </BrandName>
         </Stack>
       </div>
 
       <div style={{ margin: "auto", width: "fit-content" }}>
-        <Stack direction={"row"} spacing={3}>
-          {NavLinks.map((linkText) => {
-            return (
-              <NavLink
-                key={linkText}
-                to={"/" + linkText.toLowerCase().replaceAll(" ", "-")}
-              >
-                {linkText}
-              </NavLink>
-            );
-          })}
+        {props.windowWidth > 940 ? (
+          <Stack direction={"row"} spacing={3}>
+            {NavLinks.map((linkText) => {
+              return (
+                <NavLink
+                  key={linkText}
+                  to={"/" + linkText.toLowerCase().replaceAll(" ", "-")}
+                >
+                  {linkText}
+                </NavLink>
+              );
+            })}
+          </Stack>
+        ) : (
+          <SocialIconButton onClick={handleClick}>
+            <MenuIcon />
+          </SocialIconButton>
+        )}
+      </div>
+
+      <div style={{ margin: "auto 0 0", width: "fit-content" }}>
+        <Stack direction={"row"} spacing={props.windowWidth <= 480 ? 0 : 2}>
+          <OutlineNavButton to={"/login"}>Log in</OutlineNavButton>
+          <TextNavButton to={"/signup"}>Sign up</TextNavButton>
         </Stack>
       </div>
 
-      <div style={{ margin: "auto 0 0" }}>
-        <Stack direction={"row"} spacing={2}>
-          <OutlineButton>Log in</OutlineButton>
-          <TextButton>Sign up</TextButton>
-        </Stack>
-      </div>
+      {expandNavLinks && props.windowWidth < 940 ? (
+        <div
+          style={{
+            position: "absolute",
+            width: "-webkit-fill-available",
+            height: "-webkit-fill-available",
+
+            display: "flex",
+            backgroundColor: theme.navbarBackground,
+            borderBottom: `1px solid ${theme.navbarBorderColor}`,
+          }}
+        >
+          <div>
+            <BrandLogo src={Logo} alt="VX Logo" />
+          </div>
+          <div
+            style={{
+              margin: "0 auto",
+              width: "fit-content",
+              padding: "13px 0 0",
+            }}
+          >
+            <Stack direction={"row"} spacing={3}>
+              {NavLinks.map((linkText) => {
+                return (
+                  <NavLink
+                    key={linkText}
+                    to={"/" + linkText.toLowerCase().replaceAll(" ", "-")}
+                  >
+                    {linkText}
+                  </NavLink>
+                );
+              })}
+            </Stack>
+          </div>
+
+          <SocialIconButton
+            sx={{
+              margin: `7px ${props.bodySidePadding <= 50 ? 10 : 70}px 0 0`,
+            }}
+            onClick={handleClick}
+          >
+            <PlaylistRemoveIcon />
+          </SocialIconButton>
+        </div>
+      ) : undefined}
     </nav>
   );
 }

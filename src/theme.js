@@ -6,6 +6,7 @@ const theme = {
   overallBackground: "#010602",
   navbarBackground: "rgb(10, 24, 17, 0.9)",
   themedBackground: "#53db7a",
+  whiteTransBackground: "rgb(225, 232, 227, 0.1)",
 
   // table color
   tableBackgroundColor: "#262626",

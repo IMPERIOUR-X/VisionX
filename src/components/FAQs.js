@@ -50,7 +50,7 @@ function FAQS(props) {
       <div style={{ margin: "60px 0 0" }}>
         {digitalDropshippingFAQ.map((FAQ) => {
           return (
-            <FAQContainer sx={{ marginBottom: "20px" }}>
+            <FAQContainer key={FAQ.title} sx={{ marginBottom: "20px" }}>
               <IconButton
                 sx={{ position: "absolute", right: "30px", top: "20px" }}
               >

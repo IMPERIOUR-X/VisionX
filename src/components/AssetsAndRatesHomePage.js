@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SmallTitleHeading, TitleHeading } from "./Typograhpy";
 import {
   Table,
@@ -72,12 +72,41 @@ const tableRowCellTexts = [
 ];
 
 function AssetsAndRates(props) {
+  const [amountOfTableValuesDispalyed, setAmountOfTableValuesDispalyed] =
+    useState();
+
+  useEffect(() => {
+    const i = props.windowWidth;
+
+    if (i < 1310) {
+      if (i < 1070) {
+        if (i < 850) {
+          if (i < 670) {
+            if (i < 558) {
+              setAmountOfTableValuesDispalyed(2);
+            } else {
+              setAmountOfTableValuesDispalyed(3);
+            }
+          } else {
+            setAmountOfTableValuesDispalyed(4);
+          }
+        } else {
+          setAmountOfTableValuesDispalyed(5);
+        }
+      } else {
+        setAmountOfTableValuesDispalyed(6);
+      }
+    } else {
+      setAmountOfTableValuesDispalyed(tableHeadValues.length);
+    }
+  }, [props.windowWidth]);
+
   const positiveChangeStyle = { color: "#00ff87" };
   const negativeChangeStyle = { color: "#ff4b4b" };
   const othersValueStyle = { color: theme.primaryTextColor };
 
   return (
-    <div style={{ width: "-webkit-fill-available", margin: "120px 0 0" }}>
+    <div style={{ width: "-webkit-fill-available", margin: "140px 0 0" }}>
       <SmallTitleHeading sx={{ margin: "7px auto 0" }}>
         DDs Assets & Rates
       </SmallTitleHeading>
@@ -85,7 +114,9 @@ function AssetsAndRates(props) {
         Dropship Popular Assets
       </TitleHeading>
       <TitleHeading sx={{ margin: "7px auto 0" }}>Assets & Rates</TitleHeading>
-      <SmallTitleHeading>Live Charts</SmallTitleHeading>
+      <SmallTitleHeading sx={{ margin: "20px 0 0" }}>
+        Live Charts
+      </SmallTitleHeading>
 
       {/* Table section */}
 
@@ -93,9 +124,11 @@ function AssetsAndRates(props) {
         {/* Table Head section */}
         <TableHead>
           <TableHeadRow>
-            {tableHeadValues.map((value) => {
-              return <TableHeadCell key={value}>{value}</TableHeadCell>;
-            })}
+            {tableHeadValues
+              .slice(0, amountOfTableValuesDispalyed)
+              .map((value) => {
+                return <TableHeadCell key={value}>{value}</TableHeadCell>;
+              })}
           </TableHeadRow>
         </TableHead>
 
@@ -104,22 +137,24 @@ function AssetsAndRates(props) {
           {tableRowCellTexts.map((Row) => {
             return (
               <TableRow>
-                {Row.map((cell, cellIndex) => {
-                  return (
-                    <TableRowCell
-                      key={cell}
-                      style={
-                        cellIndex === 4
-                          ? cell.includes("-")
-                            ? negativeChangeStyle
-                            : positiveChangeStyle
-                          : othersValueStyle
-                      }
-                    >
-                      {cell}
-                    </TableRowCell>
-                  );
-                })}
+                {Row.slice(0, amountOfTableValuesDispalyed).map(
+                  (cell, cellIndex) => {
+                    return (
+                      <TableRowCell
+                        key={cell}
+                        style={
+                          cellIndex === 4
+                            ? cell.includes("-")
+                              ? negativeChangeStyle
+                              : positiveChangeStyle
+                            : othersValueStyle
+                        }
+                      >
+                        {cell}
+                      </TableRowCell>
+                    );
+                  }
+                )}
               </TableRow>
             );
           })}

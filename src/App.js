@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
-import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Error from "./pages/Error";
 
 function App() {
   return (
     <Router>
-      <NavBar />
-
       <Routes>
+        <Route path="*" element={<Error />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
-
-      <Footer />
     </Router>
   );
 }

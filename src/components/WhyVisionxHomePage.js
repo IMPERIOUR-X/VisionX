@@ -70,27 +70,40 @@ function WhyVisionxHomePage(props) {
         background: theme.overallBackground,
         width: "-webkit-fill-available",
         borderRadius: "30px",
+        padding: "20px 0 0",
       }}
     >
       <Grid container spacing={0}>
-        <Grid size={6}>
-          <img
-            src={image}
-            alt="digital dropshipping earth"
-            style={{
-              transition: "all 0.6s ease-in-out",
-              transform: `scale(${imageAnimation})`,
-              cursor: "grab",
-            }}
-            onMouseOver={() => setImageHovered(true)}
-            onMouseLeave={() => setImageHovered(false)}
-          />
-        </Grid>
+        {props.windowWidth > 1200 && (
+          <Grid size={6}>
+            <img
+              src={image}
+              alt="digital dropshipping earth"
+              style={{
+                transition: "all 0.6s ease-in-out",
+                transform: `scale(${imageAnimation})`,
+                cursor: "grab",
+              }}
+              onMouseOver={() => setImageHovered(true)}
+              onMouseLeave={() => setImageHovered(false)}
+            />
+          </Grid>
+        )}
 
-        <Grid size={6}>
-          <div style={{ margin: "50px 0 0", width: "fit-content" }}>
-            <SmallTitleHeading>Why VisionX?</SmallTitleHeading>
-            <TitleHeading sx={{ margin: "18px 0 0" }}>
+        <Grid
+          justifyContent={"center"}
+          size={props.windowWidth > 1200 ? 6 : 12}
+        >
+          <div
+            style={{
+              margin: props.windowWidth > 1200 ? "80px 0 0" : "40px 0 0",
+              width: "fit-content",
+            }}
+          >
+            <SmallTitleHeading className="SmallTitleHeading">
+              Why VisionX?
+            </SmallTitleHeading>
+            <TitleHeading className="TitleHeading" sx={{ margin: "18px 0 0" }}>
               Why Dropship With Us?
             </TitleHeading>
           </div>
@@ -98,7 +111,7 @@ function WhyVisionxHomePage(props) {
           <Grid margin={"40px 0 0"} container rowSpacing={3} columnSpacing={1}>
             {reasons.map((reason, index) => {
               return (
-                <Grid width={"fit-content"} size={6} key={reason.title}>
+                <Grid sx={{ width: "fit-content" }} size={6} key={reason.title}>
                   <div
                     onMouseOver={() => setReasonsHovered(true)}
                     onMouseLeave={() => setReasonsHovered(false)}
@@ -120,10 +133,16 @@ function WhyVisionxHomePage(props) {
                         }}
                       />
                     </div>
-                    <TitleText sx={{ margin: "14px 0 0" }}>
+                    <TitleText
+                      className="TitleText"
+                      sx={{ margin: "14px 0 0" }}
+                    >
                       {reason.title}
                     </TitleText>
-                    <TextContent sx={{ margin: "8px 0 0", width: "16rem" }}>
+                    <TextContent
+                      className="TextContent"
+                      sx={{ margin: "8px 0 0", width: "16rem" }}
+                    >
                       {reason.content}
                     </TextContent>
                   </div>

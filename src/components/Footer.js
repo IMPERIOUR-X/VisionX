@@ -11,6 +11,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { SocialIconButton } from "./Buttons";
 
 const iconLinks = [
   FacebookOutlinedIcon,
@@ -64,19 +65,49 @@ const FooterLink = styled(Link)({
   "&:hover": {
     opacity: "0.8",
   },
+
+  "@media (max-width: 1200px)": {
+    fontSize: "14px",
+  },
+
+  "@media (max-width: 1024px)": {
+    fontSize: "12px",
+  },
+
+  "@media (max-width: 768px)": {
+    fontSize: "10px",
+  },
+
+  "@media (max-width: 480px)": {
+    fontSize: "8px",
+  },
+
+  "@media (max-width: 320px)": {
+    fontSize: "6px",
+  },
 });
 
-const FooterIconLink = styled(FooterLink)({
-  color: theme.primaryTextColor,
-  background: "transparent",
-  margin: "0",
-  "&:hover": {
-    color: theme.primaryLinkColor,
+const responsiveSocialIcons = {
+  "@media (max-width: 1200px)": {
+    fontSize: "34px",
   },
-  "&:active": {
-    transform: "scale(0.9)",
+
+  "@media (max-width: 1024px)": {
+    fontSize: "30px",
   },
-});
+
+  "@media (max-width: 768px)": {
+    fontSize: "28px",
+  },
+
+  "@media (max-width: 480px)": {
+    fontSize: "24px",
+  },
+
+  "@media (max-width: 320px)": {
+    fontSize: "20px",
+  },
+};
 
 function Footer(props) {
   const currentYear = new Date().getFullYear();
@@ -86,8 +117,9 @@ function Footer(props) {
       style={{
         margin: "150px 0 0",
         width: "-webkit-fill-available",
+        maxWidth: "1600px",
         position: "relative",
-        padding: "100px 70px",
+        padding: `100px ${props.bodySidePadding}px 40px`,
       }}
     >
       <PrimaryBackgroundImage sx={{ height: "-webkit-fill-available" }} />
@@ -95,11 +127,10 @@ function Footer(props) {
       <Grid container spacing={2}>
         <Grid size={6}>
           <FooterBrand>VisionX</FooterBrand>
-
           <TitleText sx={{ margin: "30px 0 0" }}>
             Support Email Address
           </TitleText>
-          <FooterLink sx={{ margin: "7px 0 0" }}>
+          <FooterLink sx={{ margin: "10px 0 0" }}>
             visionxdigitaldropshippinglearn.com
           </FooterLink>
 
@@ -112,39 +143,45 @@ function Footer(props) {
           >
             {iconLinks.map((Icon, index) => {
               return (
-                <FooterIconLink key={index}>
-                  <Icon sx={{ fontSize: "35px" }} />
-                </FooterIconLink>
+                <SocialIconButton key={index}>
+                  <Icon sx={{ fontSize: "38px", ...responsiveSocialIcons }} />
+                </SocialIconButton>
               );
             })}
           </Stack>
+          <TextContentBold sx={{ margin: "7px 0 0" }}>
+            © {currentYear} VisionX. All rights reserved.
+          </TextContentBold>
         </Grid>
 
-        <Grid size={2}>
-          <TitleText>Company</TitleText>
-          {companyLinks.map((link) => {
-            return <FooterLink key={link}>{link}</FooterLink>;
-          })}
-        </Grid>
+        <Grid
+          size={{ xl: 6, lg: 6, md: 6, sm: 12 }}
+          sx={{ marginTop: props.windowWidth <= 899 ? "20px" : 0 }}
+        >
+          <Grid container spacing={{ xl: 1, lg: 1, md: 1, sm: 4 }}>
+            <Grid size={4}>
+              <TitleText>Company</TitleText>
+              {companyLinks.map((link) => {
+                return <FooterLink key={link}>{link}</FooterLink>;
+              })}
+            </Grid>
 
-        <Grid size={2}>
-          <TitleText>Legal & Security</TitleText>
-          {legalSecurityLinks.map((link) => {
-            return <FooterLink key={link}>{link}</FooterLink>;
-          })}
-        </Grid>
+            <Grid size={4}>
+              <TitleText>Legal & Security</TitleText>
+              {legalSecurityLinks.map((link) => {
+                return <FooterLink key={link}>{link}</FooterLink>;
+              })}
+            </Grid>
 
-        <Grid size={2}>
-          <TitleText>Support & Help</TitleText>
-          {supportHelpLinks.map((link) => {
-            return <FooterLink key={link}>{link}</FooterLink>;
-          })}
+            <Grid size={4}>
+              <TitleText>Support & Help</TitleText>
+              {supportHelpLinks.map((link) => {
+                return <FooterLink key={link}>{link}</FooterLink>;
+              })}
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-
-      <TextContentBold sx={{ margin: "4px 0 0" }}>
-        © {currentYear} VisionX. All rights reserved.
-      </TextContentBold>
     </footer>
   );
 }
