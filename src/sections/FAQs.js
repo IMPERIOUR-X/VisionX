@@ -5,10 +5,10 @@ import {
   TextContentBold,
   TitleHeading,
   TitleText,
-} from "./Typograhpy";
+} from "../components/Typograhpy";
 import { styled } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { FilledBigButton, IconButton } from "./Buttons";
+import { FilledBigButton, IconButton } from "../components/Buttons";
 
 const digitalDropshippingFAQ = [
   {

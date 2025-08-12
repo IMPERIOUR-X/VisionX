@@ -1,10 +1,24 @@
-import React from "react";
-import { SmallTitleHeading, TextContent, TitleHeading } from "./Typograhpy";
+import React, { useState } from "react";
+import {
+  SmallTitleHeading,
+  TextContent,
+  TitleHeading,
+} from "../components/Typograhpy";
 import image from "../assets/how-it-work.png";
 import Grid from "@mui/material/Grid2";
-import { FilledBigButton } from "./Buttons";
+import {
+  FilledBigButton,
+  FilledButton,
+  StrokedButton,
+} from "../components/Buttons";
 
 function HowItWorks(props) {
+  const [textExpanded, setTextExpanded] = useState(false);
+
+  function expandText() {
+    setTextExpanded((prevs) => !prevs);
+  }
+
   return (
     <div style={{ margin: "120px 0 0", width: "-webkit-fill-available" }}>
       <Grid container spacing={0}>
@@ -35,25 +49,36 @@ function HowItWorks(props) {
               branding, and customer engagement while leveraging automation for
               seamless order fulfillment.
             </TextContent>
-            <TextContent sx={{ margin: "20px 0  0" }}>
-              Sellers participate through specialized platforms or their own
-              eCommerce websites, where they can upload, price, and market their
-              digital products to a global audience. Since there are no physical
-              products involved, costs are significantly lower, and scalability
-              is much easier compared to traditional dropshipping. Sellers can
-              operate from anywhere in the world, and there are no shipping
-              constraints, making it an ideal business for those looking for
-              passive income. The success of a digital dropshipping business
-              depends on various factors, including choosing high-demand
-              products, implementing strong digital marketing strategies,
-              optimizing sales funnels, and providing excellent customer
-              support. Additionally, sellers can leverage tools like SEO, paid
-              ads, and social media marketing to increase visibility and drive
-              consistent sales. With digital products, there are also no
-              concerns about stock shortages or manufacturing delays, ensuring a
-              smooth, automated, and highly profitable business model.
-            </TextContent>
+
+            {textExpanded ? (
+              <TextContent sx={{ margin: "20px 0  0" }}>
+                Sellers participate through specialized platforms or their own
+                eCommerce websites, where they can upload, price, and market
+                their digital products to a global audience. Since there are no
+                physical products involved, costs are significantly lower, and
+                scalability is much easier compared to traditional dropshipping.
+                Sellers can operate from anywhere in the world, and there are no
+                shipping constraints, making it an ideal business for those
+                looking for passive income. The success of a digital
+                dropshipping business depends on various factors, including
+                choosing high-demand products, implementing strong digital
+                marketing strategies, optimizing sales funnels, and providing
+                excellent customer support. Additionally, sellers can leverage
+                tools like SEO, paid ads, and social media marketing to increase
+                visibility and drive consistent sales. With digital products,
+                there are also no concerns about stock shortages or
+                manufacturing delays, ensuring a smooth, automated, and highly
+                profitable business model.
+              </TextContent>
+            ) : undefined}
           </div>
+
+          <StrokedButton
+            onClick={expandText}
+            sx={{ margin: "20px 0 0 auto", display: "block" }}
+          >
+            View {textExpanded ? "less" : "more"}
+          </StrokedButton>
 
           <FilledBigButton
             sx={{

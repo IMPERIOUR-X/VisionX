@@ -1,17 +1,21 @@
 import React from "react";
 import theme from "../theme";
 import Grid from "@mui/material/Grid2";
-import { TextContentBold, TitleHeading, TitleText } from "./Typograhpy";
+import {
+  TextContentBold,
+  TitleHeading,
+  TitleText,
+} from "../components/Typograhpy";
 import { styled, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-import { PrimaryBackgroundImage } from "./BackgroundImages";
+import { PrimaryBackgroundImage } from "../components/BackgroundImages";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { SocialIconButton } from "./Buttons";
+import { SocialIconButton } from "../components/Buttons";
 
 const iconLinks = [
   FacebookOutlinedIcon,

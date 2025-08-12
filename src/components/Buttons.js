@@ -14,25 +14,21 @@ const commonStyles = {
 };
 
 const buttonResponsive = {
-  "@media (max-width: 1200px)": {
-    fontSize: "14px",
-  },
-
-  "@media (max-width: 1024px)": {
-    fontSize: "12px",
-  },
-
-  "@media (max-width: 768px)": {
-    fontSize: "10px",
-  },
-
-  "@media (max-width: 480px)": {
-    fontSize: "8px",
-  },
-
-  "@media (max-width: 320px)": {
-    fontSize: "6px",
-  },
+  // "@media (max-width: 1200px)": {
+  //   fontSize: "14px",
+  // },
+  // "@media (max-width: 1024px)": {
+  //   fontSize: "13px",
+  // },
+  // "@media (max-width: 768px)": {
+  //   fontSize: "12px",
+  // },
+  // "@media (max-width: 480px)": {
+  //   fontSize: "11px",
+  // },
+  // "@media (max-width: 320px)": {
+  //   fontSize: "10px",
+  // },
 };
 
 //////////////////////// Reusable BUTTONS ///////////////////////

@@ -3,23 +3,23 @@ import { styled } from "@mui/material";
 
 const tableCellsResponsiveness = {
   "@media (max-width: 1200px)": {
-    fontSize: "14px",
+    fontSize: "15px",
   },
 
   "@media (max-width: 1024px)": {
-    fontSize: "12px",
+    fontSize: "14px",
   },
 
   "@media (max-width: 768px)": {
-    fontSize: "10px",
+    fontSize: "13px",
   },
 
   "@media (max-width: 480px)": {
-    fontSize: "8px",
+    fontSize: "12px",
   },
 
   "@media (max-width: 320px)": {
-    fontSize: "6px",
+    fontSize: "11px",
   },
 };
 

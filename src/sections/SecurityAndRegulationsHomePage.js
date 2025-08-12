@@ -6,11 +6,11 @@ import {
   TextContent,
   TitleHeading,
   TitleText,
-} from "./Typograhpy";
+} from "../components/Typograhpy";
 import Grid from "@mui/material/Grid2";
 import { Stack } from "@mui/material";
 import GppGoodIcon from "@mui/icons-material/GppGood";
-import { FilledBigButton } from "./Buttons";
+import { FilledBigButton } from "../components/Buttons";
 
 const securityFeatures = [
   {

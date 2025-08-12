@@ -31,7 +31,7 @@ function Error(props) {
       style={{
         height: "fit-content",
         width: "-webkit-fill-available",
-        padding: "80px 0 0 ",
+        padding: "80px 20px 0 ",
         maxWidth: "1600px",
         position: "relative",
       }}

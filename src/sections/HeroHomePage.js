@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import theme from "../theme";
-import { FilledButton, TextButton } from "./Buttons";
+import { FilledButton, TextButton } from "../components/Buttons";
 import { Stack, styled } from "@mui/material";
-import { PrimaryBackgroundImage } from "./BackgroundImages";
-import { BigHeading, HeadingSubtitle, TextContentBold } from "./Typograhpy";
+import { PrimaryBackgroundImage } from "../components/BackgroundImages";
+import {
+  BigHeading,
+  HeadingSubtitle,
+  TextContentBold,
+} from "../components/Typograhpy";
 
 const Feature = styled("div")({
   padding: "9px 30px",
@@ -49,7 +53,7 @@ function HeroHomePage(props) {
       style={{
         height: "500px",
         width: "-webkit-fill-available",
-        padding: "180px 0 0",
+        padding: "200px 0 0",
         textAlign: "center",
         position: "relative",
       }}

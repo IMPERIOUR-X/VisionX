@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
-import HeroHomePage from "../components/HeroHomePage";
-import WhyVisionxHomePage from "../components/WhyVisionxHomePage";
-import FeaturesAndTools from "../components/FeaturesAndToolsHomePage";
-import HowItWorks from "../components/HowItWorksHomePage";
-import AssetsAndRates from "../components/AssetsAndRatesHomePage";
-import SecurityAndRegulations from "../components/SecurityAndRegulationsHomePage";
-import FAQS from "../components/FAQs";
-import Footer from "../components/Footer";
+import NavBar from "../sections/NavBar";
+import HeroHomePage from "../sections/HeroHomePage";
+import WhyVisionxHomePage from "../sections/WhyVisionxHomePage";
+import FeaturesAndTools from "../sections/FeaturesAndToolsHomePage";
+import HowItWorks from "../sections/HowItWorksHomePage";
+import AssetsAndRates from "../sections/AssetsAndRatesHomePage";
+import SecurityAndRegulations from "../sections/SecurityAndRegulationsHomePage";
+import FAQS from "../sections/FAQs";
+import Footer from "../sections/Footer";
 
 function HomePage(props) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

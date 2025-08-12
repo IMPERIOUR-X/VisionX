@@ -6,7 +6,7 @@ import {
   TitleHeading,
   TextContent,
   TitleText,
-} from "./Typograhpy";
+} from "../components/Typograhpy";
 import Grid from "@mui/material/Grid2";
 import PaidIcon from "@mui/icons-material/Paid";
 import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
@@ -44,6 +44,8 @@ function WhyVisionxHomePage(props) {
   const [imageAnimation, setImageAnimation] = useState(0);
   const [imageHovered, setImageHovered] = useState(false);
 
+  const [aboveBreakPoint, setAboveBreakPoint] = useState(true);
+
   useEffect(() => {
     const interval =
       reasonsHovered === false &&
@@ -64,6 +66,14 @@ function WhyVisionxHomePage(props) {
     return () => clearInterval(interval); // Cleanup to prevent memory leaks
   }, [imageHovered]);
 
+  useEffect(() => {
+    if (props.windowWidth > 1200) {
+      setAboveBreakPoint(true);
+    } else {
+      setAboveBreakPoint(false);
+    }
+  }, [props.windowWidth]);
+
   return (
     <div
       style={{
@@ -74,7 +84,7 @@ function WhyVisionxHomePage(props) {
       }}
     >
       <Grid container spacing={0}>
-        {props.windowWidth > 1200 && (
+        {aboveBreakPoint && (
           <Grid size={6}>
             <img
               src={image}
@@ -90,17 +100,17 @@ function WhyVisionxHomePage(props) {
           </Grid>
         )}
 
-        <Grid
-          justifyContent={"center"}
-          size={props.windowWidth > 1200 ? 6 : 12}
-        >
+        <Grid justifyContent={"center"} size={aboveBreakPoint ? 6 : 12}>
           <div
             style={{
-              margin: props.windowWidth > 1200 ? "80px 0 0" : "40px 0 0",
+              margin: aboveBreakPoint ? "80px 0 0" : "40px auto 0",
               width: "fit-content",
             }}
           >
-            <SmallTitleHeading className="SmallTitleHeading">
+            <SmallTitleHeading
+              className="SmallTitleHeading"
+              sx={{ margin: aboveBreakPoint ? "" : "auto" }}
+            >
               Why VisionX?
             </SmallTitleHeading>
             <TitleHeading className="TitleHeading" sx={{ margin: "18px 0 0" }}>
@@ -108,13 +118,25 @@ function WhyVisionxHomePage(props) {
             </TitleHeading>
           </div>
 
-          <Grid margin={"40px 0 0"} container rowSpacing={3} columnSpacing={1}>
+          <Grid
+            margin={"40px 0 0"}
+            container
+            rowSpacing={aboveBreakPoint ? 3 : 7}
+            columnSpacing={1}
+          >
             {reasons.map((reason, index) => {
               return (
-                <Grid sx={{ width: "fit-content" }} size={6} key={reason.title}>
+                <Grid
+                  sx={{ width: "-webkit-fill-available" }}
+                  size={{ sm: 12, md: 4, lg: 6, xl: 6 }}
+                  key={reason.title}
+                >
                   <div
                     onMouseOver={() => setReasonsHovered(true)}
                     onMouseLeave={() => setReasonsHovered(false)}
+                    style={{
+                      textAlign: aboveBreakPoint ? "start" : "center",
+                    }}
                   >
                     <div
                       style={{
@@ -122,6 +144,7 @@ function WhyVisionxHomePage(props) {
                         width: "fit-content",
                         borderRadius: "13px",
                         padding: "8px 11px",
+                        margin: aboveBreakPoint ? "0" : "auto",
                       }}
                     >
                       <reason.Icon
@@ -135,13 +158,18 @@ function WhyVisionxHomePage(props) {
                     </div>
                     <TitleText
                       className="TitleText"
-                      sx={{ margin: "14px 0 0" }}
+                      sx={{
+                        margin: `14px ${aboveBreakPoint ? "0" : "auto"} 0`,
+                      }}
                     >
                       {reason.title}
                     </TitleText>
                     <TextContent
                       className="TextContent"
-                      sx={{ margin: "8px 0 0", width: "16rem" }}
+                      sx={{
+                        margin: `8px ${aboveBreakPoint ? "0" : "auto"} 0`,
+                        width: "16rem",
+                      }}
                     >
                       {reason.content}
                     </TextContent>

@@ -9,31 +9,31 @@ const BigHeading = styled("h1")({
   width: "fit-content",
 
   "@media (max-width: 1200px)": {
-    fontSize: "58px",
-  },
-
-  "@media (max-width: 1024px)": {
     fontSize: "56px",
   },
 
+  "@media (max-width: 1024px)": {
+    fontSize: "51px",
+  },
+
   "@media (max-width: 768px)": {
-    fontSize: "48px",
+    fontSize: "47px",
   },
 
   "@media (max-width: 670px)": {
-    fontSize: "44px",
+    fontSize: "43px",
   },
 
   "@media (max-width: 557px)": {
-    fontSize: "34px",
+    fontSize: "39px",
   },
 
   "@media (max-width: 480px)": {
-    fontSize: "26px",
+    fontSize: "35px",
   },
 
   "@media (max-width: 320px)": {
-    fontSize: "20px",
+    fontSize: "31px",
   },
 
   // "@media (max-width: 600px)": {
@@ -50,21 +50,22 @@ const HeadingSubtitle = styled("p")({
   width: "48rem",
 
   "@media (max-width: 1200px)": {
-    fontSize: "14px",
+    fontSize: "15px",
   },
 
   "@media (max-width: 1024px)": {
-    fontSize: "12px",
+    fontSize: "14px",
     width: "36rem",
   },
 
   "@media (max-width: 768px)": {
-    fontSize: "10px",
+    fontSize: "13px",
     width: "34rem",
   },
 
   "@media (max-width: 670px)": {
     width: "26rem",
+    lineHeight: "17px",
   },
 
   "@media (max-width: 557px)": {
@@ -72,12 +73,12 @@ const HeadingSubtitle = styled("p")({
   },
 
   "@media (max-width: 480px)": {
-    fontSize: "6px",
+    fontSize: "12px",
     width: "18rem",
   },
 
   "@media (max-width: 320px)": {
-    fontSize: "6px",
+    fontSize: "11px",
   },
 });
 
@@ -172,7 +173,7 @@ const TitleText = styled("h3")({
 
 const TextContent = styled("p")({
   color: theme.primaryLinkColor,
-  fontSize: "14px",
+  fontSize: "16px",
   fontFamily: "Ubuntu",
   fontWeight: "200",
   width: "fit-content",
@@ -180,23 +181,23 @@ const TextContent = styled("p")({
   wordSpacing: "1px",
 
   "@media (max-width: 1200px)": {
-    fontSize: "14px",
+    fontSize: "15px",
   },
 
   "@media (max-width: 1024px)": {
-    fontSize: "12px",
+    fontSize: "14px",
   },
 
   "@media (max-width: 768px)": {
-    fontSize: "10px",
+    fontSize: "13px",
   },
 
   "@media (max-width: 480px)": {
-    fontSize: "8px",
+    fontSize: "12px",
   },
 
   "@media (max-width: 320px)": {
-    fontSize: "6px",
+    fontSize: "11px",
   },
 });
 

@@ -5,7 +5,7 @@ import {
   TextContent,
   TitleHeading,
   TitleText,
-} from "./Typograhpy";
+} from "../components/Typograhpy";
 import Grid from "@mui/material/Grid2";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";

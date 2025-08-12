@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import Logo from "../assets/VX.ico";
 import theme from "../theme";
-import {
-  OutlineNavButton,
-  SocialIconButton,
-  TextNavButton,
-} from "../components/Buttons";
+import { FilledButton, SocialIconButton } from "../components/Buttons";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PlaylistRemoveIcon from "@mui/icons-material/PlaylistRemove";
+import StorefrontIcon from "@mui/icons-material/Storefront";
 
 const NavLinks = [
   "Buy Space",
@@ -25,7 +22,7 @@ const BrandLogo = styled("img")({
 });
 
 const BrandName = styled("h1")({
-  fontSize: "18px",
+  fontSize: "22px",
   fontFamily: "Ubuntu",
   fontWeight: "400",
   color: theme.primaryTextColor,
@@ -49,19 +46,19 @@ const NavLink = styled(Link)({
   },
 
   "@media (max-width: 1024px)": {
-    fontSize: "12px",
+    fontSize: "13px",
   },
 
   "@media (max-width: 768px)": {
-    fontSize: "10px",
+    fontSize: "12px",
   },
 
   "@media (max-width: 480px)": {
-    fontSize: "8px",
+    fontSize: "11px",
   },
 
   "@media (max-width: 320px)": {
-    fontSize: "6px",
+    fontSize: "10px",
   },
 });
 
@@ -87,12 +84,18 @@ function NavBar(props) {
       }}
     >
       <div style={{ width: "fit-content", margin: "auto 0 0" }}>
-        <Stack direction={"row"} spacing={0}>
-          <BrandLogo src={Logo} alt="VX Logo" />
-          <BrandName>
-            {props.windowWidth >= 700 ? "VisionX" : "VX :-"}
-          </BrandName>
-        </Stack>
+        {props.windowWidth > 940 ? (
+          <Stack direction={"row"} spacing={0}>
+            <BrandLogo src={Logo} alt="VX Logo" />
+            <BrandName>
+              {props.windowWidth >= 700 ? "VisionX" : "VX :-"}
+            </BrandName>
+          </Stack>
+        ) : (
+          <SocialIconButton onClick={handleClick}>
+            <MenuIcon sx={{ fontSize: "33px" }} />
+          </SocialIconButton>
+        )}
       </div>
 
       <div style={{ margin: "auto", width: "fit-content" }}>
@@ -110,18 +113,27 @@ function NavBar(props) {
             })}
           </Stack>
         ) : (
-          <SocialIconButton onClick={handleClick}>
-            <MenuIcon />
-          </SocialIconButton>
+          <BrandLogo src={Logo} alt="VX Logo" />
         )}
       </div>
 
       <div style={{ margin: "auto 0 0", width: "fit-content" }}>
-        <Stack direction={"row"} spacing={props.windowWidth <= 480 ? 0 : 2}>
-          <OutlineNavButton to={"/login"}>Log in</OutlineNavButton>
-          <TextNavButton to={"/signup"}>Sign up</TextNavButton>
-        </Stack>
+        <FilledButton
+          sx={{ position: "relative", padding: "11px 40px 11px 19px" }}
+        >
+          Enter Market
+          <StorefrontIcon
+            sx={{
+              position: "absolute",
+              right: "17px",
+              top: "8px",
+              fontSize: "19px",
+            }}
+          />
+        </FilledButton>
       </div>
+
+      {/* Expandations starting */}
 
       {expandNavLinks && props.windowWidth < 940 ? (
         <div

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SmallTitleHeading, TitleHeading } from "./Typograhpy";
+import { SmallTitleHeading, TitleHeading } from "../components/Typograhpy";
 import {
   Table,
   TableBody,
@@ -8,9 +8,9 @@ import {
   TableHeadRow,
   TableRow,
   TableRowCell,
-} from "./Tables";
+} from "../components/Tables";
 import theme from "../theme";
-import { FilledButton } from "./Buttons";
+import { FilledButton } from "../components/Buttons";
 
 // Table Head Cell Texts
 const tableHeadValues = [
